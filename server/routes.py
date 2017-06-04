@@ -29,11 +29,12 @@ def _extract_attached_file():
             continue
         attach_fname = part.get_filename()
         if attach_fname:
-            return part.get_payload(decode=True)
-
-    return None
+            img = str(part.get_payload(decode=True))
+            with open('attached_image', 'wb') as f:
+                f.write(img)
 
 
 def knb():
     _download_latest_mail()
-    return _extract_attached_file()
+    _extract_attached_file()
+    return {'success': True}
