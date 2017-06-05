@@ -33,7 +33,7 @@ def _extract_attached_file():
             continue
         attach_fname = part.get_filename()
         if attach_fname:
-            img = str(part.get_payload(decode=True))
+            img = part.get_payload(decode=True)
             with open('image', 'wb') as f:
                 f.write(img)
 

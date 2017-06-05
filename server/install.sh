@@ -3,7 +3,7 @@
 git clone https://github.com/xshellinc/image-to-ascii.git
 
 pushd image-to-ascii
-for py_file in $(ls | grep "*.py")
+for py_file in $(ls | grep converter)
 do
   2to3 -w "${py_file}"
 done
