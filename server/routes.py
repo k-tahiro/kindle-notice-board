@@ -1,6 +1,10 @@
+import sys
 import email
 
 import boto3
+
+sys.path.append('./image-to-ascii')
+import converter_cli
 
 # バケット名
 AWS_S3_BUCKET_NAME = 'tahiro-bucket'
@@ -30,11 +34,15 @@ def _extract_attached_file():
         attach_fname = part.get_filename()
         if attach_fname:
             img = str(part.get_payload(decode=True))
-            with open('attached_image', 'wb') as f:
+            with open('image', 'wb') as f:
                 f.write(img)
+
+
+def _convert_aa():
+    return converter_cli.run('image')
 
 
 def knb():
     _download_latest_mail()
     _extract_attached_file()
-    return {'success': True}
+    return _convert_aa()
