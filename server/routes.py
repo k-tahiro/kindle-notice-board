@@ -39,7 +39,7 @@ def _extract_attached_file():
 
 
 def _convert_aa():
-    return converter_cli.run('image')
+    return converter_cli.run('image', custom_char='*')
 
 
 def knb():
