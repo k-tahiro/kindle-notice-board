@@ -10,8 +10,8 @@ for py_file in $(ls | grep .py)
 do
   2to3 -w "${py_file}"
 done
-sed -i 's#/#//#3' converter.py
-sed -i 's#/#//#2' converter.py
+sed -i 's#/2#//2#g' converter.py
+sed -i 's#pixel_value/color_range#pixel_value//color_range#g' converter.py
 sed -i 's/print(ascii_image)/return ascii_image/g' converter_cli.py
 
 popd
