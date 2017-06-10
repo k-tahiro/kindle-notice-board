@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly SERVER_DIR="$(cd "$(dirname "$0")" && cd "../" && pwd)"
+readonly SERVER_DIR="$(cd "$(dirname "$0")" && pwd)"
 readonly NGINX_CONF_FILE="${SERVER_DIR}/setup/nginx.conf"
 readonly SERVICE_SCRIPT_FILE="${SERVER_DIR}/setup/knb"
 readonly I2A_SCRIPT_FILE="${SERVER_DIR}/setup/install-i2a.sh"
