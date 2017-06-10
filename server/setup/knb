@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly START_SCRIPT_FILE="#SBIN_DIR#/stop-server"
+readonly START_SCRIPT_FILE="#SBIN_DIR#/start-server"
 readonly STOP_SCRIPT_FILE="#SBIN_DIR#/stop-server"
 readonly PID_FILE="/var/run/knb-uwsgi.pid"
 

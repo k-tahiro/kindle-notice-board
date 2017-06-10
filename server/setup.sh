@@ -12,7 +12,7 @@ function nginx() {
 
 function knb() {
   sudo cp "${SERVICE_SCRIPT_FILE}" /etc/init.d/knb
-  sudo sed -i "s%#SBIN_DIR#%${SERVER_FIR}/sbin%g" /etc/init.d/knb
+  sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" /etc/init.d/knb
   sudo chmod +x /etc/init.d/knb
   sudo chkconfig knb on
 }
