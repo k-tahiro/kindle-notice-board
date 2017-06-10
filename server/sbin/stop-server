@@ -3,3 +3,10 @@
 readonly PID_FILE="/var/run/knb-uwsgi.pid"
 
 sudo cat "${PID_FILE}" | sudo xargs kill
+while :
+do
+  rc=$(cat "${PID_FILE}" ; echo $?)
+  if [ $rc -eq 1 ]; then
+    break
+  fi
+done
