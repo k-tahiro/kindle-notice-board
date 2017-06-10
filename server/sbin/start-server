@@ -1,0 +1,8 @@
+#!/bin/bash
+
+readonly SCRIPT_DIR="$(dirname "$0")"
+readonly INI_FILE="${SCRIPT_DIR}/../conf/uwsgi.ini"
+readonly LOG_FILE="/var/log/knb-uwsgi.log"
+readonly PID_FILE="/var/run/knb-uwsgi.pid"
+
+uwsgi --ini "${INI_FILE}" --daemonize "${LOG_FILE}" --pidfile "${PID_FILE}"

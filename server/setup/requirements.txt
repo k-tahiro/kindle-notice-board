@@ -1,0 +1,5 @@
+begins
+boto3
+flask
+flask-restful
+pillow

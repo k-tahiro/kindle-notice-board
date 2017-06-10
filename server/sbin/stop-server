@@ -1,0 +1,5 @@
+#!/bin/bash
+
+readonly PID_FILE="/var/run/knb-uwsgi.pid"
+
+cat "${PID_FILE}" | xargs kill
