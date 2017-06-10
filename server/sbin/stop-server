@@ -2,4 +2,4 @@
 
 readonly PID_FILE="/var/run/knb-uwsgi.pid"
 
-cat "${PID_FILE}" | xargs kill
+sudo cat "${PID_FILE}" | sudo xargs kill
