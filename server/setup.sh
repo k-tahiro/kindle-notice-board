@@ -22,6 +22,8 @@ function knb() {
   sudo cp "${SERVICE_SCRIPT_FILE}" "${DESTINATION_SERVICE_FILE}"
   sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" "${DESTINATION_SERVICE_FILE}"
   sudo chmod +x "${DESTINATION_SERVICE_FILE}"
+
+  chkconfig --add knb
   sudo chkconfig knb on
 }
 
