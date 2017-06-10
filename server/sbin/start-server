@@ -4,4 +4,4 @@ readonly SCRIPT_DIR="$(dirname "$0")"
 readonly INI_FILE="${SCRIPT_DIR}/../conf/uwsgi.ini"
 
 PATH="/home/ec2-user/.pyenv/shims:${PATH}"
-sudo -u ec2-user uwsgi --ini "${INI_FILE}"
+uwsgi --ini "${INI_FILE}"
