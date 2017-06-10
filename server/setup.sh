@@ -19,7 +19,7 @@ function knb() {
   cp -f "${SOURCE_UWSGI_FILE}" "${DESTINATION_UWSGI_FILE}"
   sudo sed -i "s%#SERVER_DIR#%${SERVER_DIR}%g" "${DESTINATION_UWSGI_FILE}"
 
-  sudo cp -f "${SERVICE_SCRIPT_FILE}" "${DESTINATION_SERVICE_FILE}"
+  sudo cp -f "${SOURCE_SERVICE_FILE}" "${DESTINATION_SERVICE_FILE}"
   sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" "${DESTINATION_SERVICE_FILE}"
   sudo chmod +x "${DESTINATION_SERVICE_FILE}"
 
