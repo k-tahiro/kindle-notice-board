@@ -1,4 +1,7 @@
 #!/bin/bash
+# chkconfig: 345 98 20
+# description: Kindle Notice-Board Service
+# processname: knb
 
 readonly START_SCRIPT_FILE="#SBIN_DIR#/start-server"
 readonly STOP_SCRIPT_FILE="#SBIN_DIR#/stop-server"
