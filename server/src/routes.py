@@ -24,7 +24,7 @@ def _download_latest_mail() -> None:
     bucket.download_file(target_object.key, 'tmpfile')
 
 
-def _extract_attached_file():
+def _extract_attached_file() -> None:
     with open('tmpfile') as f:
         message = email.message_from_file(f)
 
@@ -38,7 +38,7 @@ def _extract_attached_file():
                 f.write(img)
 
 
-def _convert_aa():
+def _convert_aa() -> str:
     return converter_cli.run('image', custom_char='W').rstrip() + '\n'
 
 
