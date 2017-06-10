@@ -1,19 +1,27 @@
 #!/bin/bash
 
 readonly SERVER_DIR="$(cd "$(dirname "$0")" && pwd)"
-readonly NGINX_CONF_FILE="${SERVER_DIR}/setup/nginx.conf"
-readonly SERVICE_SCRIPT_FILE="${SERVER_DIR}/setup/knb"
+readonly SOURCE_UWSGI_FILE="${SERVER_DIR}/setup/uwsgi.ini"
+readonly SOURCE_NGINX_FILE="${SERVER_DIR}/setup/nginx.conf"
+readonly SOURCE_SERVICE_FILE="${SERVER_DIR}/setup/knb"
+readonly DESTINATION_UWSGI_FILE="${SERVER_DIR}/conf/uwsgi.ini"
+readonly DESTINATION_NGINX_FILE="/etc/nginx/conf.d/knb.conf"
+readonly DESTINATION_SERVICE_FILE="/etc/init.d/knb"
 readonly I2A_SCRIPT_FILE="${SERVER_DIR}/setup/install-i2a.sh"
 
 function nginx() {
-  sudo cp "${NGINX_CONF_FILE}" /etc/nginx/conf.d/knb.conf
+  sudo cp "${SOURCE_NGINX_FILE}" "${DESTINATION_NGINX_FILE}"
   sudo service nginx restart
 }
 
 function knb() {
-  sudo cp "${SERVICE_SCRIPT_FILE}" /etc/init.d/knb
-  sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" /etc/init.d/knb
-  sudo chmod +x /etc/init.d/knb
+  mkdir "${SERVER_DIR}/conf"
+  cp "${SOURCE_UWSGI_FILE}" "${DESTINATION_UWSGI_FILE}"
+  sudo sed -i "s%#SERVER_DIR#%${SERVER_DIR}%g" "${DESTINATION_UWSGI_FILE}"
+
+  sudo cp "${SERVICE_SCRIPT_FILE}" "${DESTINATION_SERVICE_FILE}"
+  sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" "${DESTINATION_SERVICE_FILE}"
+  sudo chmod +x "${DESTINATION_SERVICE_FILE}"
   sudo chkconfig knb on
 }
 
