@@ -2,11 +2,10 @@
 
 readonly PID_FILE="/var/run/knb-uwsgi.pid"
 
-sudo cat "${PID_FILE}" | sudo xargs kill
+cat "${PID_FILE}" | sudo xargs kill
 while :
 do
-  rc=$(cat "${PID_FILE}" > /dev/null 2>&1 ; echo $?)
-  if [ $rc -eq 1 ]; then
+  if [ ! -f "${PID_FILE}" ]; then
     break
   fi
 done
