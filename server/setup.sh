@@ -23,7 +23,7 @@ function knb() {
   sudo sed -i "s%#SBIN_DIR#%${SERVER_DIR}/sbin%g" "${DESTINATION_SERVICE_FILE}"
   sudo chmod +x "${DESTINATION_SERVICE_FILE}"
 
-  chkconfig --add knb
+  sudo chkconfig --add knb
   sudo chkconfig knb on
 }
 
@@ -31,7 +31,7 @@ function setup() {
   nginx
   knb
   "${I2A_SCRIPT_FILE}"
-  pip install -r setup/requirements.txt
+  pip install -r setup/requirements.txt > /dev/null
   sudo service knb start
 }
 
