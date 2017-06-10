@@ -7,13 +7,13 @@ readonly I2A_SCRIPT_FILE="${SERVER_DIR}/setup/install-i2a.sh"
 
 function nginx() {
   cp "${NGINX_CONF_FILE}" /etc/nginx/conf.d/knb.conf
-  service nginx restart
+  sudo service nginx restart
 }
 
 function knb() {
   cp "${SERVICE_SCRIPT_FILE}" /etc/init.d/knb
   sed -i "s%#SBIN_DIR#%${SERVER_FIR}/sbin%g" /etc/init.d/knb
-  chkconfig knb on
+  sudo chkconfig knb on
 }
 
 function setup() {
@@ -21,7 +21,7 @@ function setup() {
   knb
   "${I2A_SCRIPT_FILE}"
   pip install -r setup/requirements.txt
-  service knb start
+  sudo service knb start
 }
 
 setup
